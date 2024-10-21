@@ -7,6 +7,7 @@
   advisors: (),
   author: "",
   university: "",
+  bib_path: "",
   logo_path: "",
   description: "",
   startDate: datetime,

@@ -16,6 +16,7 @@
   university: "",
   description: "",
   logo_path: "",
+  bib_path: "",
   startDate: datetime,
   submissionDate: datetime,
   transparency_ai_tools: "",
