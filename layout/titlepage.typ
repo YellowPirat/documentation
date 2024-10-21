@@ -6,11 +6,13 @@
   supervisor: "",
   advisors: (),
   author: "",
+  university: "",
+  logo_path: "",
+  description: "",
   startDate: datetime,
   submissionDate: datetime,
 ) = {
-  // Quality checks
-  assert(degree in ("Bachelor", "Master"), message: "The degree must be either 'Bachelor' or 'Master'")
+
   
   set page(
     margin: (left: 20mm, right: 20mm, top: 30mm, bottom: 30mm),
@@ -32,18 +34,16 @@
   
   // --- Title Page ---
   v(1cm)
-  align(center, image("/figures/tum_logo.png", width: 26%))
+  align(center, image(logo_path, width: 26%))
 
   v(5mm)
-  align(center, text(font: sans-font, 2em, weight: 700, "Technical University of Munich"))
+  align(center, text(font: sans-font, 2em, weight: 700, university))
 
   v(5mm)
-  align(center, text(font: sans-font, 1.5em, weight: 100, "School of Computation, Information and Technology \n -- Informatics --"))
+  align(center, text(font: sans-font, 1.5em, weight: 100, description))
   
   v(15mm)
 
-  align(center, text(font: sans-font, 1.3em, weight: 100, degree + "’s Thesis in " + program))
-  v(8mm)
   
 
   align(center, text(font: sans-font, 2em, weight: 700, title))

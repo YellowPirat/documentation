@@ -13,6 +13,9 @@
   supervisor: "",
   advisors: (),
   author: "",
+  university: "",
+  description: "",
+  logo_path: "",
   startDate: datetime,
   submissionDate: datetime,
   transparency_ai_tools: "",
@@ -27,6 +30,9 @@
     supervisor: supervisor,
     advisors: advisors,
     author: author,
+    logo_path: logo_path,
+    university: university,
+    description: description,
     startDate: startDate,
     submissionDate: submissionDate
   )
