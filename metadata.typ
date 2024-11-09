@@ -5,7 +5,7 @@
 #let program = "Information Systems"
 #let supervisor = "Prof. Dr. Erdmann Erdmännchen"
 #let advisors = ("Jolanda Krümelmonsterhallo, M.Sc.",)
-#let author = "Maximilian Hoffmann"
+#let author = "Maximilian Hoffmann 2"
 #let university = "University of applied sciences Augsburg"
 #let description = "Computer Engineering Project"
 #let logo_path = "/figures/tha.jpg"
