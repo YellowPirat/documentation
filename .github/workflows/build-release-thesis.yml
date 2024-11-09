@@ -16,7 +16,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: '0'
-          lfs: true
+
+      - name: Install required fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          wget https://mirrors.ctan.org/fonts/newcomputermodern.zip
+          unzip newcomputermodern.zip
+          sudo mkdir -p /usr/local/share/fonts/newcomputermodern
+          sudo cp newcomputermodern/otf/* /usr/local/share/fonts/newcomputermodern/
+          fc-cache -f -v
+          rm -rf newcomputermodern*
 
       - name: Create initial tag
         run: |
@@ -33,9 +43,10 @@ jobs:
           DEFAULT_BUMP: 'patch'
 
       - uses: typst-community/setup-typst@v3
-      - run: typst compile thesis.typ thesis.pdf
-      - run: typst compile proposal.typ proposal.pdf
-      - run: typst compile registration_certificate.typ registration_certificate.pdf
+
+      - name: Compile documents
+        run: |
+          typst compile thesis.typ thesis.pdf
 
       - name: Create Release
         id: create_release
@@ -47,5 +58,3 @@ jobs:
           prerelease: false
           files: |
             thesis.pdf
-            proposal.pdf
-            registration_certificate.pdf
