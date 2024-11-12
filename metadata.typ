@@ -1,11 +1,11 @@
 // Enter your thesis data here:
-#let titleEnglish = "Devolopment of Something"
+#let titleEnglish = "Development of a CAN-Datalogger based on a FPGA-SoC"
 #let titleGerman = "(Title German)"
 #let degree = "Bachelor"
-#let program = "Information Systems"
-#let supervisor = "Prof. Dr. Erdmann Erdmännchen"
+#let program = "Computer Engineering"
+#let supervisor = "Prof. Dr. Friedrich Beckmann"
 #let advisors = ("Jolanda Krümelmonsterhallo, M.Sc.",)
-#let author = "Maximilian Hoffmann 2"
+#let author = "Maximilian Hoffmann, Benjamin Klaric, Emirhan Köktas, Stasa Lukic, Mario Wegman and Jannis Kröger"
 #let university = "University of applied sciences Augsburg"
 #let description = "Computer Engineering Project"
 #let logo_path = "/figures/tha.jpg"

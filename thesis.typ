@@ -36,5 +36,6 @@ Ref Test @bruegge2004object
 #include "/content/introduction.typ"
 #include "/content/problem.typ"
 #include "/content/motivation.typ"
+#include "/content/specification.typ"
 #include "/content/objective.typ"
 #include "/content/schedule.typ"
