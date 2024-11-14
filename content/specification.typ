@@ -28,11 +28,11 @@ The @peripheral_status register contains general informations about the Cancore 
     inset: 10pt,
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
-    [fifo_usage], [0], [9], [10],[usage of the output fifo buffer],
+    [buffer_usage], [0], [9], [10],[usage of the output fifo buffer],
     [peripheral_error],[10],[14],[5], [5 bits indicate error states in the cancore periphery],
     [core_active],[15],[15],[1],[this bit indicates whether the cancore is active or not],
-    [fifo_overflow],[16],[16],[1],[this bit indicates whether a fifo overflow occured],
-    [missed_frames],[17],[31],[15],[this 15 bits show how many can frames are lost]
+    [missed_frames],[30],[16],[15],[this 15 bits show how many can frames are lost],
+    [missed_frames_overflow],[31],[31],[1],[this bit indicates whether the missed_frames counter has a overflow in the past. This means the countervalue is garbage]
   ), caption: [peripheral_status]
 )<peripheral_status>
 
