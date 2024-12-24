@@ -29,8 +29,8 @@ The @peripheral_status1 register contains general informations about the Cancore
     inset: 10pt,
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
-    [buffer_usage], [0], [9], [10],[usage of the output fifo buffer],
-    [_NOT USED_],[4],[31],[28], [addresspace is not used. Filled with zeros]
+    [buffer_usage], [0], [15], [16],[usage of the output fifo buffer],
+    [_NOT USED_],[16],[31],[16], [addresspace is not used. Filled with zeros]
   ), caption: [peripheral_status]
 )<peripheral_status0>
 
@@ -41,7 +41,7 @@ The @peripheral_status1 register contains general informations about the Cancore
     inset: 10pt,
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
-    [peripheral_error],[0],[15],[5], [16 bits indicate error states in the cancore periphery],
+    [peripheral_error],[0],[15],[16], [16 bits indicate error states in the cancore periphery],
     [_NOT USED_],[16],[31],[16], [addresspace is not used. Filled with zeros]
   ), caption: [peripheral_status]
 )<peripheral_status1>
@@ -64,19 +64,24 @@ The @peripheral_status1 register contains general informations about the Cancore
 ==== CAN Frame register description
 The following registers include the recorded can-frame.
 
-- Baseaddress: 0x00
+- Baseaddress: 0x0C
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
     inset: 10pt,
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
-    [error_codes], [0], [15], [16], [16 bits indicate various error cases during reception],
-    [frame_type],[16],[23],[8], [this bits can indecate the following frame type, such as CAN-2.0, CAN FD or newer versions like CAN XL]
+    [stuff_error], [0], [0], [1], [Stuffbit error],
+    [form_error], [1], [1], [1], [Form error],
+    [sample_error], [2], [2], [1], [Sample error],
+    [crc_error], [3], [3], [1], [CRC error],
+    [unused_error_codes], [4], [15], [12], [16 bits indicate various error cases during reception],
+    [frame_type],[16],[23],[8], [this bits can indecate the following frame type, such as CAN-2.0, CAN FD or newer versions like CAN XL],
+    [_NOT USED_], [24], [31], [8], [addresspace is not used. Filled with zeros]
   ), caption: [CAN frame wort 0]
 )<canframe_wort_0>
 
-- Baseaddress: 0x04
+- Baseaddress: 0x10
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -87,7 +92,7 @@ The following registers include the recorded can-frame.
   ), caption: [CAN frame wort 0]
 )<canframe_wort_1>
 
-- Baseaddress: 0x08
+- Baseaddress: 0x14
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -100,7 +105,7 @@ The following registers include the recorded can-frame.
 
 
 
-- Baseaddress: 0x0C
+- Baseaddress: 0x18
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -114,7 +119,7 @@ The following registers include the recorded can-frame.
   ), caption: [CAN frame wort 2]
 )<canframe_wort_3>
 
-- Baseaddress: 0x10
+- Baseaddress: 0x1C
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -126,7 +131,7 @@ The following registers include the recorded can-frame.
   ), caption: [CAN frame wort 1]
 )<canframe_wort_4>
 
-- Baseaddress: 0x14
+- Baseaddress: 0x20
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -134,11 +139,11 @@ The following registers include the recorded can-frame.
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [crc], [0], [14], [15], [cyclic redundancy check],
-    [_NOT USED_],[16],[31],[16], [addresspace is not used. Filled with zeros]
+    [_NOT USED_],[15],[31],[17], [addresspace is not used. Filled with zeros]
   ), caption: [Wort 3]
 )<canframe_wort_5>
 
-- Baseaddress: 0x18
+- Baseaddress: 0x24
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -149,7 +154,7 @@ The following registers include the recorded can-frame.
   ), caption: [Wort 4]
 )<canframe_wort_6>
 
-- Baseaddress: 0x1C
+- Baseaddress: 0x28
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
