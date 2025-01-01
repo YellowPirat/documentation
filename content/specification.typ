@@ -31,7 +31,7 @@ The @peripheral_status1 register contains general informations about the Cancore
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [buffer_usage], [0], [15], [16],[usage of the output fifo buffer],
     [_NOT USED_],[16],[31],[16], [addresspace is not used. Filled with zeros]
-  ), caption: [peripheral_status]
+  ), caption: [buffer usage]
 )<peripheral_status0>
 
 - Baseaddress: 0x04
@@ -43,7 +43,7 @@ The @peripheral_status1 register contains general informations about the Cancore
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [peripheral_error],[0],[15],[16], [16 bits indicate error states in the cancore periphery],
     [_NOT USED_],[16],[31],[16], [addresspace is not used. Filled with zeros]
-  ), caption: [peripheral_status]
+  ), caption: [peripheral error]
 )<peripheral_status1>
 
 - Baseaddress: 0x08
@@ -56,7 +56,7 @@ The @peripheral_status1 register contains general informations about the Cancore
     [missed_frames],[0],[23],[24],[these 24 bits show how many can frames are lost],
     [missed_frames_overflow],[24],[24],[1],[this bit indicates whether the missed_frames counter has a overflow in the past. This means the countervalue is garbage],
     [_NOT USED_],[25],[31],[7], [addresspace is not used. Filled with zeros]
-  ), caption: [peripheral_status]
+  ), caption: [missed_frames]
 )<peripheral_status2>
 
 
@@ -89,7 +89,7 @@ The following registers include the recorded can-frame.
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [timestamp],[0],[31],[32], [these are the first 32 bits of the 64 bit timestamp]
-  ), caption: [CAN frame wort 0]
+  ), caption: [CAN frame wort 1]
 )<canframe_wort_1>
 
 - Baseaddress: 0x14
@@ -100,7 +100,7 @@ The following registers include the recorded can-frame.
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [timestamp],[0],[31],[32], [these are the second 32 bits of the 64 bit timestamp]
-  ), caption: [CAN frame wort 0]
+  ), caption: [CAN frame wort 2]
 )<canframe_wort_2>
 
 
@@ -116,7 +116,7 @@ The following registers include the recorded can-frame.
     [rtr],[29],[29],[1], [retransmition request flag],
     [eff],[30],[30],[1], [extended frame format id],
     [err],[31],[31],[1], [error flag],
-  ), caption: [CAN frame wort 2]
+  ), caption: [CAN frame wort 3]
 )<canframe_wort_3>
 
 - Baseaddress: 0x1C
@@ -128,7 +128,7 @@ The following registers include the recorded can-frame.
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [can_dlc],[0],[3],[4], [these 4 bits show how many bytes are in the payload],
     [_NOT USED_],[4],[31],[28], [addresspace is not used. Filled with zeros]
-  ), caption: [CAN frame wort 1]
+  ), caption: [CAN frame wort 4]
 )<canframe_wort_4>
 
 - Baseaddress: 0x20
@@ -140,7 +140,7 @@ The following registers include the recorded can-frame.
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [crc], [0], [14], [15], [cyclic redundancy check],
     [_NOT USED_],[15],[31],[17], [addresspace is not used. Filled with zeros]
-  ), caption: [Wort 3]
+  ), caption: [Wort 5]
 )<canframe_wort_5>
 
 - Baseaddress: 0x24
@@ -151,7 +151,7 @@ The following registers include the recorded can-frame.
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [data], [0], [31], [32], [bits 0 to 31],
-  ), caption: [Wort 4]
+  ), caption: [Wort 6]
 )<canframe_wort_6>
 
 - Baseaddress: 0x28
@@ -162,7 +162,7 @@ The following registers include the recorded can-frame.
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [data], [0], [31], [32], [bits 32 to 63],
-  ), caption: [Wort 5]
+  ), caption: [Wort 7]
 )<canframe_wort_7>
 
 ==== CAN Core config register description
@@ -171,6 +171,7 @@ To enable different bitrates of the CAN-Bus in the CAN Core, the sampling unit m
 Five registers are implemented for this. 
 The first four registers describe the lenghs of the different bit segments within the bit time.
 The fith bit is a quantum prescaler. It is used to globaly controll the duration of a bit time. 
+The optimal values for those registers are listed in this section @sec:buadrate_config.
 The last register is used for resetting the output interface of a CAN core. It resets the missed_frames section @peripheral_status2.
 
 - Baseaddress: 0x2C
@@ -181,7 +182,7 @@ The last register is used for resetting the output interface of a CAN core. It r
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [sync_seg], [0], [31], [32], [length of the sync_segment of a bit time],
-  ), caption: [Wort 5]
+  ), caption: [sync_seq]
 )<tab:sync_seq>
 
 - Baseaddress: 0x30
@@ -192,7 +193,7 @@ The last register is used for resetting the output interface of a CAN core. It r
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [prop_seq], [0], [31], [32], [length of the porp_seqment of a bit time],
-  ), caption: [Wort 5]
+  ), caption: [prop_seq]
 )<tab:prop_seq>
 
 - Baseaddress: 0x34
@@ -203,7 +204,7 @@ The last register is used for resetting the output interface of a CAN core. It r
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [phase_seg1], [0], [31], [32], [length of the phase_seg1 of a bit time],
-  ), caption: [Wort 5]
+  ), caption: [phase_seg_1]
 )<tab:phase_seg_1>
 
 - Baseaddress: 0x38
@@ -214,7 +215,7 @@ The last register is used for resetting the output interface of a CAN core. It r
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [phase_seg2], [0], [31], [32], [length of the phase_seg2 of a bit time],
-  ), caption: [Wort 5]
+  ), caption: [phase_seg_2]
 )<tab:phase_seg_2>
 
 - Baseaddress: 0x3C
@@ -225,7 +226,7 @@ The last register is used for resetting the output interface of a CAN core. It r
     align: horizon,
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [quantum prescaler], [0], [31], [32], [quantum prescaler value],
-  ), caption: [Wort 5]
+  ), caption: [quantum_prescaler]
 )<tab:quantum_prescaler>
 
 - Baseaddress: 0x40
@@ -237,8 +238,21 @@ The last register is used for resetting the output interface of a CAN core. It r
     table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
     [driver_reset], [0], [1], [1], [reset for the output registers comming from the driver],
     [_NOT USED_], [1], [31], [31], [],
-  ), caption: [Wort 5]
+  ), caption: [driver_reset]
 )<tab:driver_reset>
+
+=== Baudrate configs <sec:buadrate_config>
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Baudrate*], [*SyncSeg*], [*PropSeg*], [*PhaseSeg1*], [*PhaseSeg2*], [*QuntumPrescaler*]),
+    [500k], [1], [5], [7], [7], [4],
+    [1M], [1], [2], [3], [4], [4],
+  ), caption: [bit timings]
+)<tab:bit_timings>
 
 
 == Testbench
