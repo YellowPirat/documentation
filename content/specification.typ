@@ -165,6 +165,81 @@ The following registers include the recorded can-frame.
   ), caption: [Wort 5]
 )<canframe_wort_7>
 
+==== CAN Core config register description
+
+To enable different bitrates of the CAN-Bus in the CAN Core, the sampling unit must be configured for this.
+Five registers are implemented for this. 
+The first four registers describe the lenghs of the different bit segments within the bit time.
+The fith bit is a quantum prescaler. It is used to globaly controll the duration of a bit time. 
+The last register is used for resetting the output interface of a CAN core. It resets the missed_frames section @peripheral_status2.
+
+- Baseaddress: 0x2C
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [sync_seg], [0], [31], [32], [length of the sync_segment of a bit time],
+  ), caption: [Wort 5]
+)<tab:sync_seq>
+
+- Baseaddress: 0x30
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [prop_seq], [0], [31], [32], [length of the porp_seqment of a bit time],
+  ), caption: [Wort 5]
+)<tab:prop_seq>
+
+- Baseaddress: 0x34
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [phase_seg1], [0], [31], [32], [length of the phase_seg1 of a bit time],
+  ), caption: [Wort 5]
+)<tab:phase_seg_1>
+
+- Baseaddress: 0x38
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [phase_seg2], [0], [31], [32], [length of the phase_seg2 of a bit time],
+  ), caption: [Wort 5]
+)<tab:phase_seg_2>
+
+- Baseaddress: 0x3C
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [quantum prescaler], [0], [31], [32], [quantum prescaler value],
+  ), caption: [Wort 5]
+)<tab:quantum_prescaler>
+
+- Baseaddress: 0x40
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [driver_reset], [0], [1], [1], [reset for the output registers comming from the driver],
+    [_NOT USED_], [1], [31], [31], [],
+  ), caption: [Wort 5]
+)<tab:driver_reset>
+
 
 == Testbench
 === Errors
