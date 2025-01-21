@@ -38,7 +38,3 @@ Ref Test @bruegge2004object
 #include "content/userinterface/user_interface.typ"
 #include "content/validation/validation.typ"
 #include "content/hardware_description/hardware_description.typ"
-
-
-
-#include "/content/specification.typ"
