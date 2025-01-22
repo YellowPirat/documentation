@@ -1,4 +1,4 @@
-=== CAN-Core structure
+=== CAN-Core structure <sec:can_core_struct>
 
 #figure(
   image("../img/CAN__Core_Overview.drawio.png", width: 100%),
