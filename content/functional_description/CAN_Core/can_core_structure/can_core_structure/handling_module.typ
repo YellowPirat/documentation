@@ -1,7 +1,7 @@
 ==== Handling Module
 
 #figure(
-  image("../img/CAN_Core_Handling.drawio.png", width: 100%),
+  image("../../img/CAN_Core_Handling.drawio.png", width: 100%),
   caption: [Overview of the handling module]
 )<fig:overview_handling_module>
 

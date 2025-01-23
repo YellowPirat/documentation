@@ -1,7 +1,7 @@
 ==== Input Module
 
 #figure(
-  image("../img/CAN_Core_Input.drawio.png", width: 100%),
+  image("../../img/CAN_Core_Input.drawio.png", width: 100%),
   caption: [Input Module structure]
 )<fig:input_module_structure>
 

@@ -1,7 +1,7 @@
 ==== Processing Module
 
 #figure(
-  image("../img/CAN_Core_Processing.drawio.png", width: 100%),
+  image("../../img/CAN_Core_Processing.drawio.png", width: 100%),
   caption: [Overview of the processing module]
 )<fig:overview_processing_module>
 
