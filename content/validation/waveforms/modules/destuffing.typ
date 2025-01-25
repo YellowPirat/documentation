@@ -1,5 +1,7 @@
 === Destuffing
 
+The following gaves an example on the in section @sec:destuffing coverd destuffing function block.
+
 #figure(
   image("../img/destuffing.png", width: 100%),
   caption: [destuffing example]

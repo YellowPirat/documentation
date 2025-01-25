@@ -1,4 +1,4 @@
-==== Input Stream
+==== Input Stream <sec:intput_stream>
 
 #figure(
   image("../../img/decoding.drawio.png", width: 100%),

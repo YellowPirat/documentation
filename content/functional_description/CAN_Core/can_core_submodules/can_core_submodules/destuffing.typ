@@ -1,4 +1,4 @@
-==== Destuffing
+==== Destuffing <sec:destuffing>
 
 For destuffing the rxd signal, a fsm is implemented as shown in @fig:destuffing.
 
