@@ -2,6 +2,8 @@
 
 #include "CAN_Core/can_core.typ"
 #pagebreak()
+#include "ExchangeInterface/exchange_interface.typ"
+#pagebreak()
 #include "Driver/driver.typ"
 #pagebreak()
 #include "Backend/backend.typ"

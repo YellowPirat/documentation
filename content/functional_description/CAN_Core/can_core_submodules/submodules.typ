@@ -1,4 +1,4 @@
-=== Submodules
+=== Submodules <sec:submodues>
 
 In the following sections the functions of some special function blocks will be described.
 However, not all functional units are described, as some of them are trivial.

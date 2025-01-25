@@ -11,8 +11,7 @@
     [rxd_async_i], [std_logic], [in],
     [can_frame_o], [can_core_out_intf_t], [out],
     [can_frame_valid_o], [std_logic], [out],
-    [peripheral_status_o], [per_intf_t], [out],
-    [sample_config_i], [sample_intf_t], [in]
+    [baud_config_i], [sample_intf_t], [in]
   ), caption: [CAN Core entity]
 )<tab:can_core_entity>
 
