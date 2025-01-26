@@ -9,30 +9,25 @@
 It consists of three parts. The "Input Module", "Processing Module" and the "Handling Module".
 
 #heading(level: 5, outlined: false, numbering: none)[Input Module]
-The "Input Module" is responsible for taking the asynchronus receive CAN signal
-and providing a synchrouns receive CAN signal with sample pulses.
-Additionally to that, the "Input Module" enables the destuffing process in the "Processing Module",
-because this is only required during a active CAN-Frame. 
-As an second input, the module takes an signal from the "Processing Module", which signals the end of a CAN-Frame.
+The Input Module is responsible for converting the asynchronous received CAN signal into a 
+synchronous received CAN signal with sample pulses. Additionally, 
+it enables the destuffing process within the Processing Module, 
+as this is only required during an active CAN frame.
+Additionally to that, the resynchronisation process is performed inside this moudle.
+As a secondary input, the module receives a signal from the Processing Module indicating the end of a CAN frame.
 
 #heading(level: 5, outlined: false, numbering: none)[Processing Module]
-The "Processing Module" is responsible for decoding the serial CAN-Frame.
-For decoding the CAN-Frame, a destuffing Logic excludes the sample pulses.
-The Destuffing Logik is enabled by the "Input Module",
-as soon as a dominant bit was detected.
-During the decoding process, the this module can detect errors.
-If this happens, error signals are passed to the Handling Module, which is responsible
-for handling this situation. Additionally to that, the handling module also makes a 
-seperate crc-check, which also can trigger an error. for that decode and crc-signals 
-are also forwarded. In Case of an error, the "Processing Module" is resetet by the
-Handling Module.
+The Processing Module handles the decoding of the serial CAN frame. 
+During this process, a destuffing logic removes the stuffed bits, 
+which is enabled by the Input Module upon detecting a dominant bit.
+The module can also detect errors during the decoding process. 
+When an error is detected, error signals are forwarded to the Handling Module, 
+which manages the situation. In the event of an error, the Processing Module is reset by the Handling Module.
 
 #heading(level: 5, outlined: false, numbering: none)[Handling Module]
-Because the transmition of CAN-Frames can fail, it is importent to handle this situations.
-For that the Handling Module is responsible for handling errors and managing the 
-can-frame-valid signal. 
-As mentioned, Additionally to the error-signals from the "Processing Module", a 
-crc-check is performed, to detect errors. 
-If an error occures, the "Handling Modules", tries to detect an error-frame before
-setting the can_frame_valid signal, which is also enabled by an can-frame with an error.
-To indicate that an can-frame contains an error, error-codes are append to that frame.
+Since the transmission of CAN frames can fail, it is essential to address such situations. 
+The Handling Module is responsible for managing errors and controlling the can_frame_valid signal.
+In addition to handling error signals from the Processing Module, the Handling Module performs a CRC check to detect errors. 
+If an error occurs, the module attempts to detect an error frame before setting the can_frame_valid signal. 
+This signal is also triggered by CAN frames containing errors. 
+To indicate that a CAN frame contains an error, error codes are appended to the frame.

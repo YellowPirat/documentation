@@ -5,26 +5,20 @@
   caption: [Exchnage Interface structure]
 )<fig:exchange_interface_structure>
 
-As it can be seen in @tab:can_core_entity, the CAN-Core its self has no build in interface, 
-for communicating with the HPS-Core over an AXI interface.
-For this a seperate exchange interface was developed. 
-The adventage for this is, that the CAN-Core can be addapted to different bus-interfaces.
-For this, it is not needed to modify the CAN-Core its self, it is enough to just build a new
-exchange interface.
-
-In our case, the exchange interface implements a AXI4-Lite Slave function block.
-Incomming data from the CAN-Core, which is validated by the can-frame-valid signal is
-first stored to a FIFO buffer. The adventage of doing this, is the ability of better tuning the driver, 
-which reads can-frames. 
-
-The exchange interface @fig:exchange_interface_structure, takes the can-frame and the can-frame valid signals.
-To control the access to the fifo buffer, a "FIFO Input Control" block is responsible for doing this. 
-This functionblock implements the AXI-Handshake mechanisem, which is used by the FIFO-Buffer.
-For the case that the Controll-Block cant generate a successfull handshake with the fifo, it counts the 
-missed frames counter up. For a successfull write transaction in the fifo, the buffer usage-counter is count up.
-
-The AXI4-Lite Slave Interface int @fig:exchange_interface_structure is responsible for providing read and wirte 
-access, a read-access automatically reads from the fifo, when it is filled with at least one can-frame.
-For better tuning this access. the buffer usage-counter is also part of a read-transaction.
-With the value provided by it, the driver can manage the access more effeciently.
-Moreover the interface implements the ability to load config params to the can-core from the driver.
+As shown in @tab:can_core_entity, the CAN-Core itself does not have a built-in interface for communicating with the HPS-Core over an AXI interface. 
+To address this, a separate exchange interface was developed.
+The advantage of this design is that the CAN-Core can be adapted to different bus interfaces without modifying the core itself. 
+Instead, only the exchange interface needs to be updated or replaced to support a new interface.
+In this implementation, the exchange interface includes an AXI4-Lite Slave function block. 
+Incoming data from the CAN-Core, validated by the can-frame-valid signal, is first stored in a FIFO buffer. 
+The benefit of using a FIFO buffer is the improved flexibility for tuning the driver that reads CAN frames.
+The exchange interface, shown in @fig:exchange_interface_structure, processes the can-frame and can-frame-valid signals. 
+To manage access to the FIFO buffer, a "FIFO Input Control" block is responsible for coordinating this process. 
+This block implements the AXI-handshake mechanism used by the FIFO buffer. 
+If the control block fails to generate a successful handshake with the FIFO, the missed-frames counter is incremented. 
+Conversely, for a successful write transaction, the buffer usage-counter is incremented.
+The AXI4-Lite Slave Interface in @fig:exchange_interface_structure provides read and write access. 
+A read operation automatically retrieves data from the FIFO when it contains at least one CAN frame. 
+For tuning the access, the buffer usage-counter is included in the read transaction. 
+Using this value, the driver can manage access to the FIFO more efficiently.
+Additionally, the interface supports loading configuration parameters into the CAN-Core from the driver, enhancing its flexibility and usability.

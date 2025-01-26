@@ -5,25 +5,24 @@
   caption: [Overview of the handling module]
 )<fig:overview_handling_module>
 
-The in @sec:can_core_struct introduced "Handling Module" consists of two submodules.
+The "Handling Module," introduced in @sec:can_core_struct, consists of two submodules.
 
-#heading(level: 5, outlined: false, numbering: none)[CRC]
-For logging can-frames it is crusial to distinguis between CAN-Frames with correct 
-deliverd crc value and incorect deliverd crc value. 
-For this the crc-value is calculated inside the CAN-Core and than compared to the 
-deliverd crc-value. If this process detects a difference, it will be handled as a 
-crc_error. 
+#heading(level: 5, outlined: false, numbering: none)[CRC] 
+For logging CAN frames, it is crucial to distinguish between frames with correctly delivered CRC values 
+and those with incorrect CRC values. 
+To achieve this, the CRC value is calculated within the CAN-Core and compared to the delivered CRC value. 
+If a discrepancy is detected, it is treated as a crc_error.
 
-#heading(level: 5, outlined: false, numbering: none)[Error Handling]
-In a CAN-Network all CAN-Nodes are receiving the transmitted can-frames.
-So every CAN-Node seperately checks the received CAN-Frame for errors.
-If a error is detected, the answer is, that every node starts to send a error-frame.
-In our case this process is handled seperately in the "Error Handling" module. 
-The goal of this module is to detect this error-frame. After detecting an error-frame,
-a error-frame-valid signal is passed to the Frame Valid Module. 
-The aim of this, is to handle Error-Frames as normal Frames, but with an error-code inside the frame.
+#heading(level: 5, outlined: false, numbering: none)[Error Handling] 
+In a CAN network, all CAN nodes receive the transmitted CAN frames. 
+Each node independently checks the received frame for errors. 
+If an error is detected, the nodes respond by transmitting an error frame.
+In this system, the "Error Handling" module manages this process separately. 
+The module's primary task is to detect error frames. Once an error frame is detected, 
+an error_frame_valid signal is sent to the "Frame Valid" module. 
+The purpose of this mechanism is to treat error frames as normal frames but with an error code included in the frame.
 
-#heading(level: 5, outlined: false, numbering: none)[Frame Valid]
-The Frame Valid Module is used to handle the can_frame_valid signal which is active, when 
-the decoded data is valid. This is normaly the case, from the end of a frame (with error or without),
-to the beginning of a new_frame.
+#heading(level: 5, outlined: false, numbering: none)[Frame Valid] 
+The "Frame Valid" module manages the can_frame_valid signal, which becomes active when the decoded data is valid. 
+This is typically the case from the end of one frame (regardless of whether it contains an error) 
+to the beginning of a new frame.
