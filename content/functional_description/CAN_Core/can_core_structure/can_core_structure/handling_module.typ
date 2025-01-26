@@ -18,4 +18,12 @@ crc_error.
 In a CAN-Network all CAN-Nodes are receiving the transmitted can-frames.
 So every CAN-Node seperately checks the received CAN-Frame for errors.
 If a error is detected, the answer is, that every node starts to send a error-frame.
-In our case this process is handled seperately in the "Error Handling" module
+In our case this process is handled seperately in the "Error Handling" module. 
+The goal of this module is to detect this error-frame. After detecting an error-frame,
+a error-frame-valid signal is passed to the Frame Valid Module. 
+The aim of this, is to handle Error-Frames as normal Frames, but with an error-code inside the frame.
+
+#heading(level: 5, outlined: false, numbering: none)[Frame Valid]
+The Frame Valid Module is used to handle the can_frame_valid signal which is active, when 
+the decoded data is valid. This is normaly the case, from the end of a frame (with error or without),
+to the beginning of a new_frame.

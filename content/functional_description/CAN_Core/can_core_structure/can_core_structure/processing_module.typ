@@ -8,6 +8,9 @@
 The in @sec:can_core_struct introduced "Processing Module", also consists,
 of four submodules.
 
+It can be seen, that for simplicity, signals are merged into signal groups, by an circle with an plus sign
+in the middle.
+
 #heading(level: 5, outlined: false, numbering: none)[Destuffing]
 Because of the bit stuffing mechanisem implemented in the CAN protocol, 
 reading of received can-frames, needs an destuffing logik. 
@@ -23,10 +26,8 @@ control signals like end-of-frame or form_error signals are also generated for o
 The extracted CAN-Frame is than merged with the timestamp of the received message.
 
 #heading(level: 5, outlined: false, numbering: none)[Timestamp]
-For timestamping received CAN-Frames a simple 64 bit counter is generated.
+For timestamping received CAN-Frames a simple 64 bit counter is implemented.
 With each start_of frame (bus_active), the actual timer value is stored and
 merged with the decoded CAN-Frame
 
-#heading(level: 5, outlined: false, numbering: none)[Frame Valid]
-For managing the different cases in which a frame is valid (valid frame or valid error frame), 
-a fourth module which is responsible for this, is introduced.
+
