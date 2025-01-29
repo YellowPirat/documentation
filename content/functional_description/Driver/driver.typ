@@ -1,4 +1,5 @@
 == Driver
+_Ahmet Emirhan Göktaş_
 
 The driver provides the interface between the hardware CAN core and the Linux networking stack. The implementation follows the Linux kernel's New API (NAPI) model for network device polling.
 
