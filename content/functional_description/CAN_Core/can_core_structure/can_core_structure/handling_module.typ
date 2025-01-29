@@ -23,6 +23,14 @@ The module's primary task is to detect error frames. Once an error frame is dete
 an error_frame_valid signal is sent to the "Frame Valid" module. 
 The purpose of this mechanism is to treat error frames as normal frames but with an error code included in the frame.
 
+#figure(
+  image("../../img/error_frames.png", width: 80%),
+  caption: [CAN-Bus error-frame @error_frame]
+)<fig:error_frame_css>
+
+@fig:error_frame_css illustrates a typical example of an Error Frame. It consists of a fixed passive error section with six dominant bits and a variable-length active error section, which can have a maximum of six dominant bits.
+The goal of this module is to detect this bus behavior and transition the state machine of the processing module to the idle state as quickly as possible.
+
 #heading(level: 5, outlined: false, numbering: none)[Frame Valid] 
 The "Frame Valid" module manages the can_frame_valid signal, which becomes active when the decoded data is valid. 
 This is typically the case from the end of one frame (regardless of whether it contains an error) 
