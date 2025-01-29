@@ -1,4 +1,5 @@
 ==== Sampling
+_Maximilian Hoffmann_
 
 #figure(
   image("../../img/can_bus_bittime.png", width: 100%),

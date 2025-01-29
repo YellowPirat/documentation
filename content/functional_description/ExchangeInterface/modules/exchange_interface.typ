@@ -1,4 +1,5 @@
 === FIFO buffered exchange Interface
+_Maximilian Hoffmann_
 
 #figure(
   image("../img/ExchangeInterface.drawio.png", width: 100%),

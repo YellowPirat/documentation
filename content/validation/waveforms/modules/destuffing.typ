@@ -1,4 +1,5 @@
 === Destuffing
+_Maximilian Hoffmann_
 
 The following gaves an example on the in section @sec:destuffing coverd destuffing function block.
 

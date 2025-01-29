@@ -1,4 +1,5 @@
 ==== Input Stream <sec:intput_stream>
+_Maximilian Hoffmann_
 
 #figure(
   image("../../img/decoding.drawio.png", width: 100%),

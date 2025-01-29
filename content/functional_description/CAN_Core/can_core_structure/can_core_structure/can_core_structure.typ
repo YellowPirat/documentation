@@ -1,4 +1,5 @@
 ==== CAN-Core structure <sec:can_core_struct>
+_Maximilian Hoffmann_
 
 #figure(
   image("../../img/CAN__Core_Overview.drawio.png", width: 100%),

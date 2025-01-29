@@ -1,4 +1,5 @@
 ==== Handling Module
+_Maximilian Hoffmann_
 
 #figure(
   image("../../img/CAN_Core_Handling.drawio.png", width: 100%),

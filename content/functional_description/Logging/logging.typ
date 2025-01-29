@@ -1,4 +1,5 @@
 == Logging
+_Maximilian Hoffmann_
 
 For logging incoming CAN messages, a SocketCAN-based data logger was developed.
 This logger is called socketcan_mcap_logger.

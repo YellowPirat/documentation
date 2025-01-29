@@ -1,4 +1,5 @@
 === Sampling
+_Maximilian Hoffmann_
 
 #figure(
   image("../img/sample.png", width: 100%),

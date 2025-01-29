@@ -1,4 +1,5 @@
 === Decoding
+_Maximilian Hoffmann_
 
 @fig:frame_decoding shows the process of decoding the transmitted data-frame
 - ID: 0x777

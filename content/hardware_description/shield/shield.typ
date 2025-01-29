@@ -1,4 +1,5 @@
 == CAN Transceiver Shield
+_Maximilian Hoffmann_
 
 To connect the FPGA to a real CAN bus, it is necessary to develop an adapter circuit board.
 The reason for this is that CAN relies on a differential "analog" signal. These signals

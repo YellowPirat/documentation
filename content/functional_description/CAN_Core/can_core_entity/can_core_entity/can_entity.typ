@@ -1,4 +1,5 @@
 === Entity
+_Maximilian Hoffmann_
 
 #figure(
   table(
