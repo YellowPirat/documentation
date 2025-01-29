@@ -1,48 +1,49 @@
-== WebApplication
+== Webapplication
 _Jannis Gröger_
 
-Die Webanwendung besteht aus drei Komponenten. ...
-MCAP Logger ist auch dabei...
+The application itself consists of three parts: the backend, the frontend and a reverse proxy which together are making it able for the user to see the CAN data and manage different settings. To actually log the data shown in the website, this project makes use of a CLI tool called socketcan_mcap_logger. This logger is not part of the actual project, but connected closely since our project can control this specific logger. The following paragraphs focus on the three parts of the project and explain the selection of each technology, what the function of the technology is and how it is used in this project.
 
 === Backend
 _Mario Wegmann_
-==== Auswahl der Technologie <Backend_Auswahl_Technologie>
-Am Anfang des Projekts wurden verschiedene Programmiersprachen und Frameworks für das Backend ausgetestet um eine geeignete Wahl für dieses Projekt zu treffen. 
+==== Selection of the technology <backend_selection_technology>
+At the beginning of the project, various programming languages and frameworks for the backend were tested in order to make a suitable choice for this project. 
 
 ===== Next.js in TypeScript
-*Beschreibung:* Ein Fullstack Framework, welches auf React aufbaut und ermöglicht Backend und Frontend in einem zu schreiben. Unterstützt die Programmiersprachen JavaScript und TypeScript. 
+*Description:* A fullstack framework that builds on React and enables backend and frontend to be written in one. Supports the programming languages JavaScript and TypeScript. 
 
 
-*Vorteile:* Wurde von Teammitgliedern schon in vergangene Projekten genutzt, daher besteht hier bereits Erfahrung. Ebenso können Frontend und Backend mit der gleichen Programmiersprache und im gleichen Projekt geschrieben werden, womit doppelter Code vermieden wird. React ist ein beliebtes Framework für Frontendwebentwicklung.  
+*Advantages:* Has already been used by team members in past projects, so there is already experience here. Frontend and backend can also be written with the same programming language and in the same project, which avoids duplicate code. React is a popular framework for frontend web development.  
 
 
-*Nachteile:* Das Backend wird in JavaScript bzw. TypeScript geschrieben, somit muss auf dem Server ein JavaScript Runtime Enviorment laufen um das Backend auszuführen. JavaScript ist jedoch eine interpretierte Programmiersprache und ist daher nicht so performant. 
+*Disadvantages:* The backend is written in JavaScript or TypeScript, so a JavaScript runtime environment must be running on the server to execute the backend. However, JavaScript is an interpreted programming language and is therefore not as performant. 
+
 
 ===== Phoenix in Elixir
-*Beschreibung:* Phoenix ist ein Webframework, welches in der Sprache Elixir geschrieben wird. Elixier wiederum baut auf der funktionalen Programmiersprache Erlang und der Erlang VM auf. 
+*Description:* Phoenix is a web framework written in the Elixir language. Elixir in turn is based on the functional programming language Erlang and the Erlang VM. 
 
 
-*Vorteile:* In Elixir können Aufgaben leicht parallelsiert werden, da diese als Module strukturiert werden. Zusätzlich bietet die Modularisierung Stabilität, da in der Erlang VM Module automatisch neu gestartet werden, falls in diesen ein Fehler auftritt. 
+*Advantages:* In Elixir, tasks can be easily parallelized as they are structured as modules. In addition, modularization offers stability, as modules are automatically restarted in the Erlang VM if an error occurs in them. 
 
 
-*Nachteile:* Keine Erfahrung der Teammitglieder sowhol mit dem Framework, als auch mit der Programmiersprache. Steilerer Lernkurve, da funktionale Programmiersprachen statt objektorientierter Programmiersprache verwendet wird. Deutlich weniger Nutzung im Internet, als JavaScript, wodurch weniger Lernmaterial verfügbar ist. 
+*Disadvantages:* No experience of the team members with either the framework or the programming language. Steeper learning curve, as functional programming languages are used instead of object-oriented programming languages. Significantly less use on the Internet than JavaScript, which means that less learning material is available. 
 
 ===== Go
-*Beschreibung:* Go ist eine Programmiersprache, welche von Google entwickelt wurde und primär für Backend Entwicklung angedacht ist. Mit Go kommt auch eine umfangreiche Standardlibary mit, welche es ermöglicht ein einfaches Backend ohne Zusätzlich Frameworks zu erstellen. 
+*Description:* Go is a programming language that was developed by Google and is primarily intended for backend development. Go also comes with an extensive standard library, which makes it possible to create a simple backend without additional frameworks. 
 
-*Vorteile:* Go ist eine kompilierte Sprache und kann auf dem Server somit performant und ohne externe Abhängigkeiten laufen. 
+*Advantages:* Go is a compiled language and can therefore run on the server with high performance and without external dependencies. 
 
 
-*Nachteile:* Noch wenig Erfahrung im Team mit der Programmiersprache. 
+*Disadvantages:* Still little experience in the team with the programming language. 
 
-Nach Tests mit allen drei Varianten haben wurde Go schlussendlich als Backend Lösung festgelegt. Entscheidende Faktoren waren dabei, dass das Go Backend kompiliert werden kann, wodurch die begrenzten CPU Ressourcen des SoC effizienter genutzt werden, als bei interpretierten Programmiersprachen. Zudem lässt sich nativ mit Go auf Syscalls zugreifen, was den Zugriff auf den CAN Socket erheblich vereinfacht. 
 
-==== Funktion
+After testing all three variants, Go was finally chosen as the backend solution. Decisive factors were that the Go backend can be compiled, which means that the limited CPU resources of the SoC are used more efficiently than with interpreted programming languages. In addition, syscalls can be accessed natively with Go, which considerably simplifies access to the CAN interfaces over sockets. 
 
-Aufgrund der geringen Komplexität des Backends wurde das komplette Backend in einer Datei `main.go` verfasst. Es wird eine Library verwendet `Websocket`, welche eine Websockets in Go implementiert. Das Backend kann mit drei Parametern aufgerufen werden um das Verhalten zu ändern. So kann der Websocket Port mit `-port` angepasst werden. Mit `-debug` werden Debug Nachrichten auf der Komandozeile ausgegeben. Und mit `-interfaces` wird eine Liste der CAN Interfaces übergeben, auf denen die CAN Nachrichten ausgelesen werden sollen. Beim Start werden die Parameter geparsed und anschließend für jedes übergebene interface eine Goroutine gestartet, welche mithilfe von Syscalls kontinuierlich CAN Frames liest. Der Read Syscall ist dabei blockierend, wodurch die Routine erst weiter ausgeführt wird, wenn ein Frame gelesen wurde. Zudem wird ein Websocket-Server erstellt, welcher Websocket Anfragen annimmt und eine Liste aller verbundenen Clients vorhält. Ist ein CAN Frame erfolgreich ausgelesen, dann wird der Inhalt als JSON serialisiert und per Broadcast an alle verbundenen Clients über Websockets veröffentlicht. Die JSON enthält dabei die CAN Message ID, die Länge der Payload, die Payload selbst, ein Zeitstempel, wann der Frame ausgelesen wurde und auf welchen Interace der Frame gelesen wurde. Neben dem broadcasten der CAN Nachrichten ist das Backend auf für die Kontrolle des MCAP Loggers zuständig, es nimmt über HTTP Befehle vom Frontend entegen um den Logger zu konfigurieren und zu steuern. Des Weiteren stellt das Backend dem Frontend eine Übersicht über alle konfigurierten CAN Sockets zu Verfügung und ermöglicht dem Frontend das hochladen von .dbc und .yaml Dateien. 
+==== Function
 
-==== Verwendung
+Due to the low complexity of the backend, the complete backend was written in a `main.go` file. A library `Websocket` is used, which implements a websocket in Go. The backend can be called with three parameters to change the behavior. The Websocket port can be adjusted with `-port`. Debug messages are output to the command line with `-debug`. And `-interfaces` is used to pass a list of CAN interfaces on which the CAN messages are to be read. At startup, the parameters are parsed and then a goroutine is started for each interface passed, which continuously reads CAN frames using syscalls. The read syscall is blocking, which means that the routine is only executed once a frame has been read. A web socket server is also created, which accepts Websocket requests and keeps a list of all connected clients. Once a CAN frame has been successfully read, the content is serialized as JSON and published via broadcast to all connected clients via web sockets. The JSON contains the CAN message ID, the length of the payload, the payload itself, a time stamp, when the frame was read and on which interface the frame was read. In addition to broadcasting the CAN messages, the backend is also responsible for controlling the MCAP logger; it receives commands from the frontend via HTTP to configure and control the logger. Furthermore, the backend provides the frontend with an overview of all configured CAN sockets and enables the frontend to upload .dbc and .yaml files. 
 
-Gestartet wird das Backend mit den passenden Parametern direkt auf der CLI. Es kann bei Bedarf auch in ein systemd-Dienst eingebaut werden um beim hochfahren automatisch gestartet zu werden. 
+==== Usage
+
+The backend is started directly on the CLI with the appropriate parameters. If required, it can also be built into a systemd service to be started automatically while booting. 
 
 
