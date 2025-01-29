@@ -12,11 +12,8 @@ jobs:
   build_release_thesis:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: '0'
-          lfs: true
+      - name: Checkout code
+        uses: nschloe/action-cached-lfs-checkout@v1
 
       - name: Install required fonts
         run: |
