@@ -22,11 +22,9 @@
 
 #set heading(numbering: none)
 
-
-#pagebreak()
-#outline()
-
-Ref Test @bruegge2004object
+#outline(
+  indent: 1.5em
+)
 
 #pagebreak()
 
@@ -38,3 +36,18 @@ Ref Test @bruegge2004object
 #include "content/userinterface/user_interface.typ"
 #include "content/validation/validation.typ"
 #include "content/hardware_description/hardware_description.typ"
+
+#set heading(numbering: none)
+#heading("List of Figures")
+#outline(
+  title: none,
+  target: figure.where(kind: image)
+)
+#pagebreak()
+
+#set heading(numbering: none)
+#heading("List of Tables")
+#outline(
+  title: none,
+  target: figure.where(kind: table)
+) 

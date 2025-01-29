@@ -10,3 +10,7 @@
 #pagebreak()
 #include "Frontend/frontend.typ"
 #pagebreak()
+#include "ReverseProxy/reverseproxy.typ"
+#pagebreak()
+#include "Logging/logging.typ"
+#pagebreak()

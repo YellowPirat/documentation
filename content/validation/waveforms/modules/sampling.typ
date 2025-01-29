@@ -1,16 +1,17 @@
 === Sampling
+_Maximilian Hoffmann_
 
 #figure(
   image("../img/sample.png", width: 100%),
   caption: [waveform sampling example]
 )<fig:waveform_sampling>
 
-@fig:waveform_sampling shows a example of a resync. This is due to a higher baudrate than expected.
-What can be seen, is that the transition from a recesive (HIGH) to a dominat (LOW) bus state, which is called
-edge, occured during the prob_seg_s.
-This means that the sample-pulse have to be earlier, to sample the bit at the rigth position.
-In this case, the   phase_seg_1 time-segment is shortened by the distance from finishing the sync_seg to the
-position where the edge occures. 
-@fig:waveform_sampling emphesises the two different lenghts of phase_seg_1 in this example.
-Doing this, can compensate different baudrates up to 2%.
+@fig:waveform_sampling shows an example of resynchronization due to a higher baud rate than expected. 
+As seen in the figure, the transition from a recessive (HIGH) to a dominant (LOW) bus state, 
+known as an "edge," occurs during the prog_seg.
+This means the sample pulse needs to be adjusted to occur earlier, 
+so the bit is sampled at the correct position. 
+In this case, the phase_seg_1 time segment is shortened by the distance between the end of the sync_seg and the position where the edge occurs.
+@fig:waveform_sampling highlights the two different lengths of phase_seg_1 in this example. 
+By doing this, the system can compensate for different baud rates, up to 2%.
 

@@ -1,1 +1,0 @@
-== Goal of the project

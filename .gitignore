@@ -1,2 +1,4 @@
 *.pdf
 *.bkp
+
+.DS_Store

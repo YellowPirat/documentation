@@ -1,4 +1,5 @@
 ==== Destuffing <sec:destuffing>
+_Maximilian Hoffmann_
 
 For destuffing the rxd signal, a fsm is implemented as shown in @fig:destuffing.
 
@@ -7,8 +8,10 @@ For destuffing the rxd signal, a fsm is implemented as shown in @fig:destuffing.
   caption: [destuffing fsm of the rxd signal]
 )<fig:destuffing>
 
-The fsm holds state about the last transmitted bits, to detect a bit sequence with 
-five low bits transmitted or five high bits transmitted. 
-The rule says, that after five similar bits, the transmitter has to insert a inverted bit.
-This behavior is implemented reversed in this fsm, so it can detect the appropiate stuffbit 
-and a stuffbit error.
+The FSM maintains the state of the last transmitted bits to detect a sequence of five consecutive low bits 
+or five consecutive high bits. 
+According to the CAN protocol rules, after five identical bits, 
+the transmitter must insert an inverted bit (a stuff bit).
+In this FSM, the behavior is implemented in reverse, allowing it to detect the appropriate stuff bit 
+and identify a stuff bit error.
+For performing this behavior, the last bit is also included into the decision.

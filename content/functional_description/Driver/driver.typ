@@ -80,6 +80,7 @@ The YellowPirat CAN driver supports multiple CAN cores using the linux device tr
 \
 \
 
+#pagebreak()
 
 ```bash
 /dts-v1/;

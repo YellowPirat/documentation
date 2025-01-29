@@ -66,15 +66,15 @@
   set heading(numbering: "1.1")
 
   // --- Paragraphs ---
-  let firstParagraphIndent = 1.45em
+  let firstParagraphIndent = 0em
   show heading: it => {
     it
     h(firstParagraphIndent)
   }
-  set par(leading: 1em, justify: true, first-line-indent: 2em)
+  set par(leading: 1em, justify: true, first-line-indent: 0em)
 
   // --- Citation Style ---
-  set cite(style: "alphanumeric")
+  set cite(style: "institute-of-electrical-and-electronics-engineers")
 
   // --- Figures ---
   show figure: set text(size: 0.85em)
@@ -83,6 +83,4 @@
 
   pagebreak()
   bibliography("/thesis.bib")
-  pagebreak()
-  transparency_ai_tools_layout(transparency_ai_tools)
 }
