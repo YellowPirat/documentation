@@ -1,25 +1,25 @@
 === Frontend
+
+==== Selection of technology
 _Mario Wegmann_
 
-==== Auswahl der Technologie
-In @Backend_Auswahl_Technologie wurden bereits die verschiedenen Webframeworks erwähnt, welche im Rahmen dieser Projektarbeit evaluiert wurden. Auch wenn Next.js nicht als Backend technologie ausgewählt wurde, bietet es sich dennoch an das Framework im Frontend zu verwende. Eines der Gründe ist unter anderem der modulare Aufbau mittels React Components. Diese Components werden in Dateien definiert und können in anderen Dateien wiederverwendet werden. Ein weitere Grund ist die Möglichkeit von Next.js das Projekt statisch zu exportieren. Bei diesem Prozess wird der Next.js Code, die Node.js Libraries und der eigenen TypeScript Code kompiliert und als Ergebniss .html-, .css- und .js-Dateien ausgegeben. Diese Dateien können dann auf einem Webserver abgelegt werden ohne das dieser TypeScript ausführen muss. Der Webserver muss somit jediglich die angefragten Dateien an die Clients ausliefern. Dadurch kann der SoC auf dem FPGA entlastet werden und sämtliches Frontend Processing läuft auf den Clients ab. 
+The various web frameworks that were evaluated as part of this project were already mentioned in @backend_selection_technology. Even if Next.js was not selected as the backend technology, it still makes sense to use the framework in the frontend. One of the reasons for this is the modular structure using React components. These components are defined in files and can be reused in other files. Another reason is the possibility of Next.js to export the project statically. In this process, the Next.js code, the libraries and the projects TypeScript code are compiled and .html, .css and .js files are output as a result. These files can then be stored on a web server without it having to execute JavaScript. The web server only has to deliver the requested files to the clients. This reduces the load on the SoC on the FPGA and all front-end processing runs on the clients. 
 
-Aufgrund der Komplexität der Visualisierung wurden folgenden Bibliotheken verwendet: 
+Due to the complexity of the visualization, the following React libraries were used: 
 
-- *TailwindCSS*: Ermöglicht CSS Formatierung mit HTML Code zu schreiben
-- *Lucide-Reacts*: Eine Bibliothek mit SVG-Icons
-- *shadcn/ui*: Bietet UI Components
-- *Gridstack.js*: Bietet ein draggable Grid Layout System with
-- *Recharts*: Ist eine Charting Library
-
-==== Funktion
+- *TailwindCSS*: Enables CSS formatting to be written with HTML
+- *Lucide-Reacts*: A library with SVG icons
+- *shadcn/ui*: Provides UI components
+- *Gridstack.js*: Provides a draggable grid layout system
+- *Recharts*: Is a charting library
 
 
+==== Functionality
+_Jannis Gröger_
 
-==== Verwendung
+\
+The Frontend itself communicates via WebSockets and HTTP with the backend to ensure live updates of the incoming CAN frames and calls different API methods for example to handle file uploads or get the .dbc file to parse the CAN frames. It also provides the UI for the user to actually see the read CAN data and to manage the files and control the CLI logger. 
 
+==== Usage
 
-Implementierung
-Vorgehensweise
-Zusammenspiel der Komponenten
-Warum wurden Entscheidungen getroffen
+The compiled files of the frontend must be located in the `/var/www` directory on the FPGA. After starting the backend, the website can be accessed via `http://<IP_of_the_FPGA_SoC/` in the webbrowser.
