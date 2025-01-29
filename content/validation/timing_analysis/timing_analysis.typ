@@ -39,7 +39,7 @@ Summarized data from the waveform and the path summary of the timing report can 
 As observed, the critical path runs between the _From Node_ and _To Node_. A visual representation of this path can be seen @fig:path. This is the real path on the FPGA SoC chip between these two nodes.
 
 #figure(
-  image("img/Path.png", width: 25%),
+  image("img/Path.png", width: 30%),
   caption: [Graphical data path]
 )<fig:path>
 

@@ -25,8 +25,13 @@ Typically, the system must be set to a 60-ohm impedance,
 which is achieved by placing one resistor at each end of the CAN bus system.
 
 #figure(
-image("img/Shield_platine.png", width: 100%),
+image("img/Shield_platine.png", width: 80%),
 caption: [Shield board]
 )<fig:shield_circuit_board>
 
-@fig:shield_circuit_board shows the final result. The circuit board was designed in KiCad.
+@fig:shield_circuit_board shows the final result. The circuit board was designed in KiCad as can be seen in @fig:shield_kicad_layout.
+
+#figure(
+image("img/layout.png", width: 80%),
+caption: [KiCad Layout]
+)<fig:shield_kicad_layout>

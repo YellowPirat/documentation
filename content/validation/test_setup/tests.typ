@@ -6,7 +6,7 @@ In order to ensure that the implemented design of the Yellow Pirat is functional
 Firstly, a test setup including a Raspberry Pi was established. With the use of the Raspberry Pi, and a custom shield board containing CAN transceivers, different CAN messages could be sent between CAN transceivers. During this, the Yellow Pirat is situated as a passive observer of this communication. This enables the Yellow Pirat to be a member of this communication without the need to take a part in it, by sending CAN messages. The idea behind this setup is to be able to test if, among other, the detection, and classification of the CAN messages and sampling of the received bits work, while sending known data and being a part of a real CAN bus system. The data received on the Yellow Pirat side is then displayed over UART to a monitor. This setup is shown in @fig:pi_test.
 
 #figure(
-  image("img/Pi_test.png", width: 80%),
+  image("img/Pi_test.png", width: 65%),
   caption: [Test setup including Raspberry Pi]
 )<fig:pi_test>
 

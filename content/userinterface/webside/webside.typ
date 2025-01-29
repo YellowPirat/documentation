@@ -1,4 +1,4 @@
-==== website
+==== Website
 _Jannis Gröger_
 
 \

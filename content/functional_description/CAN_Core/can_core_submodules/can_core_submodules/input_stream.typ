@@ -10,7 +10,7 @@ The module "Input Stream" is responsible for decoding the serial can-frame, as c
 
 #figure(
   image("../../img/can_frame_vector.png", width: 100%),
-  caption: [can_frame]
+  caption: [Standard CAN Frame @vector_intro_can]
 )<fig:can_frame_vector>
 
 Due to the complexity and size of the FSM, I decided not to visualize it in @fig:decoding_module_overview. However, 

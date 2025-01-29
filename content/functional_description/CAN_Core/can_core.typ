@@ -6,4 +6,3 @@
 #include "can_core_structure/structure.typ"
 #pagebreak()
 #include "can_core_submodules/submodules.typ"
-#pagebreak()

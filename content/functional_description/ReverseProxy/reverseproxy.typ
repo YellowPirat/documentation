@@ -23,6 +23,7 @@ As the web application consists of the various components described above, a rev
 
 *Disadvantages:* Caddy is not as widespread as Apache or Nginx. 
 
+\
 Caddy was selected for this project because the clearly structured configuration file saves time and reduces errors. 
 
 ==== Configuration

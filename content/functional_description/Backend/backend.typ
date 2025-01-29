@@ -35,7 +35,7 @@ At the beginning of the project, various programming languages and frameworks fo
 
 *Disadvantages:* Still little experience in the team with the programming language. 
 
-
+\
 After testing all three variants, Go was finally chosen as the backend solution. Decisive factors were that the Go backend can be compiled, which means that the limited CPU resources of the SoC are used more efficiently than with interpreted programming languages. In addition, syscalls can be accessed natively with Go, which considerably simplifies access to the CAN interfaces over sockets. 
 
 ==== Function

@@ -150,7 +150,7 @@ The device names are not directly connected to the device names of the kernel mo
   ), caption: [Data[0-31]]
 )<tab:0x24>
 
-#heading(level: 4, outlined: false, numbering: none)[Data[31-63] - 0x28 - (R)]
+#heading(level: 4, outlined: false, numbering: none)[Data[32-63] - 0x28 - (R)]
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
@@ -160,3 +160,59 @@ The device names are not directly connected to the device names of the kernel mo
     [data], [0], [31], [32], [bits 32 to 63],
   ), caption: [Data[31-63]]
 )<tab:0x28>
+
+#heading(level: 4, outlined: false, numbering: none)[SyncSeg - 0x2C - (W)]
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [sync_sec], [0], [31], [32], [],
+  ), caption: [SyncSeg]
+)<tab:0x2C>
+
+#heading(level: 4, outlined: false, numbering: none)[ProbSeg - 0x30 - (W)]
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [prob_sec], [0], [31], [32], [],
+  ), caption: [ProbSeg]
+)<tab:0x30>
+
+#heading(level: 4, outlined: false, numbering: none)[PhaseSeg1 - 0x34 - (W)]
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [phase_seg_1], [0], [31], [32], [],
+  ), caption: [PhaseSeg1]
+)<tab:0x34>
+
+#heading(level: 4, outlined: false, numbering: none)[PhaseSeg2 - 0x38 - (W)]
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [phase_seg_2], [0], [31], [32], [],
+  ), caption: [PhaseSeg2]
+)<tab:0x38>
+
+#heading(level: 4, outlined: false, numbering: none)[Driver Reset - 0x40 - (W)]
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header( [*Name*], [*Startbit*], [*Endbit*], [*Length*], [*Comment*]),
+    [driver_reset], [0], [1], [1], [],
+    [_NOT USED_], [1],[31],[31], []
+  ), caption: [Driver Reset]
+)<tab:0x40>
