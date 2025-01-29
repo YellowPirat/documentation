@@ -1,6 +1,6 @@
 #import "/utils/todo.typ": *
 
-== Settings
+==== Subpage Settings
 _Jannis Gröger_
 
 \
@@ -13,7 +13,7 @@ The Settings page of this project as shown in @settingspage serves as a tool to 
 )<settingspage>
 \
 
-=== Managing CAN Assignments and Logger Operations
+===== Managing CAN Assignments and Logger Operations
 
 In the Logger Control section, the user can view and modify CAN assignments. Each assignment consists of a CAN interface, e.g. can0 or can1, a DBC file, which defines the CAN signals of the CAN frames, and a YAML file, which contains the configuration for the socketcan mcap data logger - a CLI tool to log CAN data into .mcap files.
 
@@ -23,7 +23,7 @@ Once assignments are set up, users can control the logging process with simple a
 
 As users interact with the logger, they receive real-time feedback on its status, ensuring transparency in the logging process. If an error occurs, such as missing configuration files, the system notifies the user immediately.
 
-=== Uploading and Managing Configuration Files
+===== Uploading and Managing Configuration Files
 
 To configure the CAN assignments effectively, users first need to upload the required .dbc and .yaml files. This is handled in the File Upload section.
 
