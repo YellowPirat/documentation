@@ -67,10 +67,7 @@
 
   // --- Paragraphs ---
   let firstParagraphIndent = 0em
-  show heading: it => {
-    it
-    h(firstParagraphIndent)
-  }
+
   set par(leading: 1em, justify: true, first-line-indent: 0em)
 
   // --- Citation Style ---
