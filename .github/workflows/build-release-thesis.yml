@@ -12,8 +12,9 @@ jobs:
   build_release_thesis:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: nschloe/action-cached-lfs-checkout@v1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install required fonts
         run: |
@@ -26,19 +27,19 @@ jobs:
           fc-cache -f -v
           rm -rf newcomputermodern*
 
-      #- name: Create initial tag
-      #  run: |
-      #    if [ -z "$(git tag -l 'v*')" ]; then
-      #      git tag v0.0.0
-      #    fi
+      - name: Create initial tag
+        run: |
+          if [ -z "$(git tag -l 'v*')" ]; then
+            git tag v0.0.0
+          fi
 
-      #- name: Bump version and push tag
-      #  id: bump
-      #  uses: anothrNick/github-tag-action@1.71.0
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #    WITH_V: true
-      #    DEFAULT_BUMP: 'patch'
+      - name: Bump version and push tag
+        id: bump
+        uses: anothrNick/github-tag-action@1.71.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: 'patch'
 
       - uses: typst-community/setup-typst@v3
 
