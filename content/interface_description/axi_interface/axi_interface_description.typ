@@ -1,6 +1,7 @@
 == AXI Interface
 
 === CAN Core allignment
+_Maximilian Hoffmann_
 
 @tab:can_core_allignment shows how the initialised CAN-Cores are alligned in the addressspace.
 The device names are not directly connected to the device names of the kernel modules.

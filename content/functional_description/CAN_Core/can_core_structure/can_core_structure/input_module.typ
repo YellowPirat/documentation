@@ -1,4 +1,5 @@
 ==== Input Module
+_Maximilian Hoffmann_
 
 #figure(
   image("../../img/CAN_Core_Input.drawio.png", width: 100%),

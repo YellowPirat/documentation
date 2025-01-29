@@ -1,4 +1,5 @@
 ==== Processing Module
+_Maximilian Hoffmann_
 
 #figure(
   image("../../img/CAN_Core_Processing.drawio.png", width: 100%),

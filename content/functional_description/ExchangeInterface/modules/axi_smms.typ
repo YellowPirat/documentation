@@ -1,4 +1,5 @@
 === AXI SMMS
+_Maximilian Hoffmann_
 
 #figure(
   image("../img/AXI_SMMS.drawio.png", width: 100%),
