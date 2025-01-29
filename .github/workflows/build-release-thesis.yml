@@ -26,19 +26,19 @@ jobs:
           fc-cache -f -v
           rm -rf newcomputermodern*
 
-      - name: Create initial tag
-        run: |
-          if [ -z "$(git tag -l 'v*')" ]; then
-            git tag v0.0.0
-          fi
+      #- name: Create initial tag
+      #  run: |
+      #    if [ -z "$(git tag -l 'v*')" ]; then
+      #      git tag v0.0.0
+      #    fi
 
-      - name: Bump version and push tag
-        id: bump
-        uses: anothrNick/github-tag-action@1.71.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-          DEFAULT_BUMP: 'patch'
+      #- name: Bump version and push tag
+      #  id: bump
+      #  uses: anothrNick/github-tag-action@1.71.0
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #    WITH_V: true
+      #    DEFAULT_BUMP: 'patch'
 
       - uses: typst-community/setup-typst@v3
 
