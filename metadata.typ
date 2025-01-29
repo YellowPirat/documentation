@@ -5,7 +5,7 @@
 #let program = "Computer Engineering"
 #let supervisor = "Prof. Dr. Friedrich Beckmann"
 #let advisors = ("Jolanda Krümelmonsterhallo, M.Sc.",)
-#let author = "Maximilian Hoffmann, Benjamin Klaric, Emirhan Köktas, Stasa Lukic, Mario Wegman and Jannis Kröger"
+#let author = "Maximilian Hoffmann, Benjamin Klaric, Ahmet Emirhan Köktas, Stasa Lukic, Mario Wegman and Jannis Gröger"
 #let university = "University of applied sciences Augsburg"
 #let description = "Computer Engineering Project"
 #let logo_path = "/figures/tha.jpg"
