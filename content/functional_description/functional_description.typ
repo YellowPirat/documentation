@@ -10,3 +10,5 @@
 #pagebreak()
 #include "Frontend/frontend.typ"
 #pagebreak()
+#include "Logging/logging.typ"
+#pagebreak()
