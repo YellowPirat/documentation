@@ -1,4 +1,6 @@
-=== Timing analysis
+== Timing analysis
+_Benjamin Klarić_
+
 To ensure that the CAN-Core design works with the set clock (50 MHz), a timing analysis is conducted. The goal of the timing analysis is to verify, that the data arrives at the right time between the registers, and if not, the timing violations can be easily identified.
 
 In order to run the timing analysis on the synthesized design of the written CAN-Core modules, a constraints file, a .sdc file, specifying, among other, the used clock frequency is needed.
@@ -6,8 +8,8 @@ In order to run the timing analysis on the synthesized design of the written CAN
 The timing analysis generates a lot of reports and summaries. One of the more important ones is the analysis of the critical path. A critical path is a path from an input to an output with the largest delay. A waveform analysis of a such path in the CAN-Core implementation can be observed in @fig:timing_analysis.
 
 #figure(
-  image("../img/Waveform.png", width: 100%),
-  caption: [Waveform of the critical path in CAN-Core design]
+  image("img/Waveform.png", width: 100%),
+  caption: [Waveform of the critical path in CAN-Core design]
 )<fig:timing_analysis>
 
 The waveform shows, among other, a difference between the data arrival time and data required time, called slack. The positive slack time shown is the waveform diagram means that the data arrives with time to spare, before it needs to be stable.
@@ -37,7 +39,7 @@ Summarized data from the waveform and the path summary of the timing report can 
 As observed, the critical path runs between the _From Node_ and _To Node_. A visual representation of this path can be seen @fig:path. This is the real path on the FPGA SoC chip between these two nodes.
 
 #figure(
-  image("../img/Path.png", width: 25%),
+  image("img/Path.png", width: 25%),
   caption: [Graphical data path]
 )<fig:path>
 
@@ -53,13 +55,8 @@ $F_"max" = 82.86 "MHz"$.
 This can be confirmed with the Fmax summary of the timing analysis, which is shown in @fig:fmax.
 
 #figure(
-  image("../img/Fmax1.png", width: 100%),
+  image("img/Fmax.png", width: 80%),
   caption: [Fmax summary]
 )<fig:fmax>
-
-#figure(
-  image("../img/Fmax2.png", width: 80%),
-  caption: [Fmax summary]
-)<fig:w>
 
 The second line in the summary shows the maximum frequency of the HPS SDRAM interface clock. It is limited by the memory device specifications rather than FPGA routing delays, as stated in the note column.

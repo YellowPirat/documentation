@@ -22,8 +22,6 @@
 
 #set heading(numbering: none)
 
-
-#pagebreak()
 #outline()
 
 Ref Test @bruegge2004object

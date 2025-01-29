@@ -1,4 +1,6 @@
 === CRC
+_Benjamin Klarić_
+
 The explained flow of the CRC calculation can be observed in @fig:crc_example.
 
 #figure(
