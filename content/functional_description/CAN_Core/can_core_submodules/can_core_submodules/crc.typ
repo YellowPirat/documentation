@@ -1,5 +1,5 @@
 ==== CRC <sec:crc>
-To ensure, that the received CAN frames are indeed valid, and contain no transmission errors, CRC is calculated within the CAN-Core, for comparison purposes. For calculation of the CRC value, an FSM (Finite-state machine), which controls the CRC calculation, is implemented as shown in @fig:crc_overview.
+To ensure, that the received CAN frames are indeed valid, and contain no transmission errors, CRC is calculated within the CAN-Core, for comparison purposes. For calculation of the CRC value, an FSM for control of the CRC calculation, is implemented as shown in @fig:crc_overview.
 
 #figure(
   image("../../img/CRC.png", width: 100%),
