@@ -50,8 +50,7 @@ $T_"cp" = 12.069 "ns"$. \
 Now calculating the $F_"max"$ as reciprocal of the critical path delay: \
 $F_"max" = 1/T_"cp"$ \
 $F_"max" = 1/(12.069 "ns")$ \
-$F_"max" = 82.86 "MHz"$.
-
+$F_"max" = 82.86 "MHz"$. \
 This can be confirmed with the Fmax summary of the timing analysis, which is shown in @fig:fmax.
 
 #figure(
