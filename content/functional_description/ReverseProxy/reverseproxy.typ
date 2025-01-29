@@ -1,32 +1,32 @@
-=== ReverseProxy
+=== Reverse proxy
 _Mario Wegmann_
 
-Da die Webanwendung aus den zuvor beschriebenen verschiedenen Komponenten besteht wird ein Reverse Proxy benötigt, um diese unter einer URL zu vereinheitlichen. 
+As the web application consists of the various components described above, a reverse proxy is required to standardize them under one domain. 
 
-==== Auswahl der Technologie
+==== Selection of the technology
 
-===== Apache und Nginx
-*Beschreibung:* Die bekanntesten ReverseProxys sind Apache und Nginx. 
-
-
-*Vorteile:* Weit verbreitet 
+===== Apache and Nginx
+*Description:* The best-known reverse proxies are Apache and Nginx. 
 
 
-*Nachteile:* Umständliche Konfigurationsdateien
+*Advantages:* Widely used 
+
+
+*Disadvantages:* Cumbersome configuration files
 
 ===== Caddy
-*Beschreibung:* Caddy ist ein Reverseproxy von der Firma ZeroSSL, welcher in Go geschrieben ist. 
+*Description:* Caddy is a reverse proxy from the company ZeroSSL, which is written in Go. 
 
 
-*Vorteile:* Neben einer einfach zu lesenden Konfigurationsdatei, bietet Caddy weitere Funktionen an, welche die Aufgaben eines reinen Reverseproxy übersteigend. So ermöglicht Caddy unter anderem das automatische beantragen von SSL Zertifikaten über ACME Provider, einen integrierten Fileserver und die Möglichkeit die Konfigurationsdatei live neu zu laden, ohne den Caddy Servie neu starten zu müssen. 
+*Advantages:* In addition to an easy-to-read configuration file, Caddy offers further functions that exceed the tasks of a pure reverse proxy. For example, Caddy enables the automatic application for SSL certificates via ACME providers, an integrated file server and the possibility to reload the configuration file live without having to restart the Caddy service. 
 
 
-*Nachteile:* Caddy ist nicht so weit verbreitet wie Apache oder Nginx. 
+*Disadvantages:* Caddy is not as widespread as Apache or Nginx. 
 
-==== Konfiguration
+Caddy was selected for this project because the clearly structured configuration file saves time and reduces errors. 
 
-Alle anfragen an die Web Application gehen über Port 80 (HTTP) auf den Caddy Reverseproxy. HTTPs wird in diesem Projekt nicht verwendet, da der FPGA nicht über eine öffentliche Domain erreichbar ist und somit kein SSL Zertifikat erstellt werden kann. Die simple Konfiguration besteht aus zwei Komponenten. Anfragen mit dem Pfad `/ws` Beginnen werden auf Port 8080 weitergeleitet, wo das Go Backend diese entgegennimmt. Unter diesem Pfad befindet sich somit die Werbindung von Client und Server über Websocket. Alle restlichen Anfragen werden als Dateianfragen betrachtet. Hierbei wird der Caddy Fileserver verwendet, welcher im Systempfad /var/www nach den passenden Dateien sucht. Dies können unter anderem die .HTML, .CSS und .js Dateien, welche das Frontend bilden sein, oder die .dbc und .json Dateien, die vom Server geladen werden sollen. 
+==== Configuration
 
-Die Konfiguration wird in der Standard Konfigurationsdatei `/etc/caddy/Caddyfile` hinterlegt und Caddy wird als Dienst im Hintergrund ausgeführt. 
+All requests to the web application go via port 80 (HTTP) to the caddy reverse proxy. HTTPs is not used in this project as the FPGA is not accessible via a public domain and therefore no signed SSL certificate can be created. The simple configuration consists of two components. Requests starting with the paths `/ws`, `/assignments`, `/logger` and `/upload` are forwarded to port 8080, where the Go backend receives them. The advertising connection between client and server via websocket is therefore located under path `/ws`. All other requests are regarded as file requests. The Caddy file server is used here, which searches for the appropriate files in the system path /var/www. These can include the .HTML, .CSS and .js files that make up the frontend, or the .dbc and .yaml files that are to be loaded by the server. 
 
-TODO Grafik einfügen
+The configuration is stored in the standard configuration file `/etc/caddy/Caddyfile` and Caddy is executed as a service in the background. 
